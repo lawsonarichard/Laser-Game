@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ffc6db2c17c9a346a2cdda53cc6b1d6, type: 3}
-  m_Name: Wave 1
+  m_Name: Wave Black
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5333892608709142766, guid: b81b806839f06da418b96ac6fcbaaf76,
     type: 3}
@@ -18,5 +18,5 @@ MonoBehaviour:
     type: 3}
   timeBetweenSpawns: 0.5
   spawnRandomFactor: 0.3
-  numberOfEnemies: 5
-  moveSpeed: 2
+  numberOfEnemies: 10
+  moveSpeed: 5
