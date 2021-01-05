@@ -10,14 +10,19 @@ public class Player : MonoBehaviour
     [SerializeField] float yMin;
     [SerializeField] float yMax;
 
+    Coroutine firingCoroutine;
+
     [SerializeField] float padding = 1f;
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float laserSpeed = 10f;
+    [SerializeField] float laserFiringPeriod = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
         SetupMoveBoundaries();
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -26,16 +31,37 @@ public class Player : MonoBehaviour
         Fire();
     }
 
+    IEnumerator PrintAndWait()
+    {
+        Debug.Log("First message sent");
+        yield return new WaitForSeconds(3);
+        Debug.Log("The second message sent.");
+
+    }
     private void Fire()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject laser = Instantiate(
-                laserPrefab, 
-                transform.position, 
-                Quaternion.identity) as GameObject;
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, laserSpeed);
+           firingCoroutine = StartCoroutine(FireContinuously());
         }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(firingCoroutine);
+        }
+    }
+
+    IEnumerator FireContinuously()
+    {
+        while (true)
+        {
+            GameObject laser = Instantiate(
+                    laserPrefab,
+                    transform.position,
+                    Quaternion.identity) as GameObject;
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, laserSpeed);
+            yield return new WaitForSeconds(laserFiringPeriod);
+        }
+
     }
 
     private void Move()
