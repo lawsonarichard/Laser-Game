@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5333892608709142760}
   - component: {fileID: 5333892608709142767}
   - component: {fileID: 30667062588541167}
+  - component: {fileID: -994299545951749227}
+  - component: {fileID: 3550613047965876398}
   m_Layer: 0
   m_Name: Red
   m_TagString: Untagged
@@ -95,3 +97,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveConfig: {fileID: 11400000, guid: e202dc39eb79cfa4aa3e3793ed765ced, type: 2}
+--- !u!114 &-994299545951749227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333892608709142766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898df9a128a6681499533f88bef8f87a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!58 &3550613047965876398
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333892608709142766}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.42
