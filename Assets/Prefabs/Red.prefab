@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 30667062588541167}
   - component: {fileID: -994299545951749227}
   - component: {fileID: 3550613047965876398}
-  m_Layer: 0
+  - component: {fileID: 4320288894539285853}
+  m_Layer: 9
   m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  shotCounter: 0
+  minTimeBetweenShots: 0.2
+  maxTimeBetweenShots: 1
+  projectile: {fileID: 5065798999885378741, guid: 0cefae5e8e99ccb4796628a92dd7f830,
+    type: 3}
+  projectileSpeed: 15
 --- !u!58 &3550613047965876398
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -120,9 +127,22 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.42
+--- !u!114 &4320288894539285853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333892608709142766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf714025732977d4b80f68648baf1c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50

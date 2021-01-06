@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
+{   
+    [Header("Player Attr.")]
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] float xMin;
-    [SerializeField] float xMax;
-    [SerializeField] float yMin;
-    [SerializeField] float yMax;
-
-    Coroutine firingCoroutine;
-
     [SerializeField] float padding = 1f;
+    [SerializeField] float health = 200;
+
+   
+    [Header("Player Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float laserSpeed = 10f;
     [SerializeField] float laserFiringPeriod = 0.1f;
+
+    Coroutine firingCoroutine;
+    float xMin;
+    float xMax;
+    float yMin;
+    float yMax;
     // Start is called before the first frame update
     void Start()
     {
         SetupMoveBoundaries();
+        Debug.Log(health);
     }
 
 
@@ -30,7 +35,22 @@ public class Player : MonoBehaviour
         Move();
         Fire();
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) { return; }
+        ProcessHit(damageDealer);
+    }
 
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        health -= damageDealer.GetDamage();
+        damageDealer.Hit();
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     IEnumerator PrintAndWait()
     {
         Debug.Log("First message sent");
