@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
             transform.rotation);
         Destroy(explosion, durationOfExplosion);
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSoundVolume);
+        FindObjectOfType<Level>().LoadGameOver();
     }
     IEnumerator PrintAndWait()
     {
